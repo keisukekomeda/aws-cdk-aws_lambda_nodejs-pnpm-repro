@@ -14,6 +14,7 @@ export class OkStack extends cdk.Stack {
         forceDockerBundling: true,
         nodeModules: ["sharp"],
         dockerImage: cdk.DockerImage.fromBuild(path.join(__dirname, "."), {
+          platform: cdk.aws_lambda.Architecture.X86_64.dockerPlatform,
           buildArgs: {
             IMAGE: cdk.aws_lambda.Runtime.NODEJS_20_X.bundlingImage.image,
             ESBUILD_VERSION: "0",
